@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | TravelNF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+  <!-- AdminLTE -->
+  <link rel="stylesheet" href="../../node_modules/admin-lte/dist/css/adminlte.css">
+
+  <style>
+    /* BRAND TITLE */
+.sidebar-brand,
+.sidebar-brand .brand-text {
+  color: #ffffff !important;
+}
+
+/* MENU TEXT */
+.app-sidebar .nav-link p,
+.app-sidebar .nav-link i {
+  color: #ffffff !important;
+}
+
+/* MENU ACTIVE */
+.app-sidebar .nav-link.active {
+  background-color: #198754 !important;
+  color: #ffffff !important;
+}
+
+/* HOVER */
+.app-sidebar .nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+  color: #ffffff !important;
+}
+
+
+    :root {
+  --text-primary: #14532d;   /* hijau gelap */
+  --text-secondary: #166534;
+  --text-muted: #6b7280;
+}
+
+body {
+  color: var(--text-primary);
+}
+
+  :root {
+    --primary-green: #22c55e;       /* hijau muda */
+    --primary-green-dark: #16a34a;  /* hover */
+  }
+
+  /* Navbar */
+  .app-header {
+    background-color: var(--primary-green);
+  }
+
+  /* Sidebar active */
+  .nav-sidebar .nav-link.active {
+    background-color: var(--primary-green);
+    color: #fff;
+  }
+
+  /* Small box */
+  .small-box.text-bg-primary {
+    background-color: var(--primary-green) !important;
+  }
+
+  /* User header */
+  .user-header {
+    background-color: var(--primary-green) !important;
+  }
+
+  body {
+      font-family: system-ui, sans-serif;
+    }
+
+    #recentOrders {
+  display: none;
+}
+
+  </style>
+</head>
+
+<body class="layout-fixed sidebar-expand-lg">
+<div class="app-wrapper">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="app-header navbar navbar-expand bg-body">
+    <div class="container-fluid">
+
+      <!-- Sidebar toggle -->
+<ul class="navbar-nav">
+  <li class="nav-item">
+    <a class="nav-link"
+   data-lte-toggle="sidebar"
+   href="javascript:void(0)"
+   role="button">
+  <i class="bi bi-list"></i>
+</a>
+
+  </li>
+</ul>
+
+
+      <!-- Right navbar -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown user-menu">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+            <img src="https://i.pravatar.cc/40"
+                 class="user-image rounded-circle shadow"
+                 alt="User Image">
+            <span class="d-none d-md-inline">Admin</span>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+    <li class="user-header bg-white text-dark text-center">
+        <img src="../Logo.svg" class="rounded-circle shadow mb-2 bg-white">
+        <p class="mb-0">
+            Admin TravelNF
+            <small>Administrator</small>
+        </p>
+    </li>
+</ul>
+
+
+
+            <li class="user-footer d-flex justify-content-between px-3">
+              <a href="../../src/index.html" class="btn btn-default btn-flat" id="logoutBtn">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <!-- =============== END NAVBAR =============== -->
+
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="app-sidebar bg-dark shadow">
+    <div class="sidebar-brand">
+      <a href="#" class="brand-link">
+        <span class="brand-text fw-bold">TravelNF Admin</span>
+      </a>
+    </div>
+
+    <div class="sidebar-wrapper">
+      <nav>
+        <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview">
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon bi bi-speedometer2"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="orders.html" class="nav-link">
+              <i class="nav-icon bi bi-cart"></i>
+              <p>Orders</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="../../src/index.html" class="nav-link text-danger" id="logoutSidebar">
+              <i class="nav-icon bi bi-box-arrow-right"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- =============== END SIDEBAR =============== -->
+
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="app-main">
+
+    <div class="app-content-header">
+      <div class="container-fluid">
+        <h1 class="mb-0">Dashboard</h1>
+      </div>
+    </div>
+
+    <div id="recentOrders">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nama</th>
+      <th>Email</th>
+      <th>Waktu</th>
+    </tr>
+  </thead>
+  <tbody id="orderData"></tbody>
+</table>
+    </div>
+
+
+    <div class="app-content">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <div class="small-box text-bg-primary">
+              <div class="inner">
+                <h3 id="totalOrders">0</h3>
+                <p>Total Orders</p>
+              </div>
+              <div class="icon">
+                <i class="bi bi-cart"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box text-bg-success">
+              <div class="inner">
+                <h3 id="totalCustomers">0</h3>
+                <p>Total Customers</p>
+              </div>
+              <div class="icon">
+                <i class="bi bi-people"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box text-bg-info">
+              <div class="inner">
+                <h3 id="totalUsers">0</h3>
+                <p>Total Registered Users</p>
+              </div>
+              <div class="icon">
+                <i class="bi bi-person-badge"></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Registered Users</h3>
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-striped mb-0">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Role</th>
+                      <th>Registered At</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="usersData"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+  <!-- =============== END MAIN CONTENT =============== -->
+
+</div>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../node_modules/admin-lte/dist/js/adminlte.js"></script>
+
+<script>
+  // Proteksi halaman admin
+  if (localStorage.getItem('isLogin') !== 'true') {
+    window.location.href = '../login.html';
+  }
+
+// Load order data
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const tableBody = document.getElementById("orderData");
+
+  if (orders.length === 0) {
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="3" class="text-center text-muted">
+          Belum ada order masuk
+        </td>
+      </tr>
+    `;
+  } else {
+    orders.forEach(order => {
+      const row = `
+        <tr>
+          <td>${order.name}</td>
+          <td>${order.email}</td>
+          <td>${order.createdAt}</td>
+        </tr>
+      `;
+      tableBody.innerHTML += row;
+    });
+  }
+
+// TOTAL ORDERS
+document.getElementById("totalOrders").innerText = orders.length;
+
+// TOTAL CUSTOMERS (EMAIL UNIK)
+const uniqueCustomers = [
+  ...new Set(
+    orders
+      .map(o => o.email)
+      .filter(email => email) // buang null / kosong
+  )
+];
+
+document.getElementById("totalCustomers").innerText = uniqueCustomers.length;
+
+
+// ===== Registered users
+function renderUsers() {
+  const ulist = JSON.parse(localStorage.getItem("users") || "[]");
+  document.getElementById("totalUsers").innerText = ulist.length;
+  const usersTable = document.getElementById("usersData");
+
+  if (ulist.length === 0) {
+    usersTable.innerHTML = `
+      <tr>
+        <td colspan="4" class="text-center text-muted">Belum ada user terdaftar</td>
+      </tr>
+    `;
+    return;
+  }
+
+  usersTable.innerHTML = "";
+  ulist.forEach(u => {
+    usersTable.innerHTML += `
+      <tr>
+        <td>${u.username}</td>
+        <td>${u.role || 'user'}</td>
+        <td>${u.createdAt || '-'}</td>
+        <td>
+          <button class="btn btn-sm btn-danger btn-delete-user" data-username="${u.username}">
+            <i class="bi bi-trash"></i> Hapus
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+
+  // Attach delete handlers
+  document.querySelectorAll('.btn-delete-user').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const name = this.dataset.username;
+      if (!confirm('Hapus user ' + name + ' ?')) return;
+      const arr = JSON.parse(localStorage.getItem("users") || "[]");
+      const filtered = arr.filter(x => x.username !== name);
+      localStorage.setItem("users", JSON.stringify(filtered));
+      renderUsers();
+    });
+  });
+}
+
+renderUsers();
+
+  // Logout
+  function logout() {
+    localStorage.removeItem('isLogin');
+    window.location.href = '../login.html';
+  }
+
+  document.getElementById('logoutBtn')?.addEventListener('click', logout);
+  document.getElementById('logoutSidebar')?.addEventListener('click', logout);
+</script>
+
+</body>
+</html>

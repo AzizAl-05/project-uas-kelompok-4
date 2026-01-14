@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+
+  <!-- Smooth scroll -->
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+
+  <!---Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!---Font Taprom -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Taprom&display=swap" rel="stylesheet">
+
+  <!-- Icon -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+
+<body class="font-primary tracking-wider">
+  <!---Navbar-->
+  <header class="w-full py-8">
+    <nav class="container mx-auto px-4 flex justify-between items-center">
+      <!---Logo-->
+      <div class="">
+        <img src="../public/Logo.svg" alt="" class="w-[110px] md:w-[140]">
+      </div>
+
+      <!--Menu-->
+      <div class="">
+        <ul class="hidden md:flex capitalize gap-8">
+          <!-- ✅ Menu anchor -->
+          <li><a href="#beranda" class="hover:text-green">beranda</a></li>
+          <li><a href="#packages" class="hover:text-green">packages</a></li>
+          <li><a href="#destination" class="hover:text-green">destination</a></li>
+          <li><a href="#about-us" class="hover:text-green">about us</a></li>
+          <li><a href="#news" class="hover:text-green">news</a></li>
+        </ul>
+      </div>
+
+      <!---login-->
+      <div class="hidden md:block">
+        <a href="../public/admin/login.html" class="btn">Login</a>
+      </div>
+
+      <!--mobile menu-->
+      <div id="navMobile" class="hidden transition-all duration-300">
+        <ul class="capitalize bg-white absolute h-[100vh] inset-0 py-20 flex
+                flex-col gap-4 items-center z-50">
+          <div class="">
+            <img src="../public/Logo.svg" alt="" class="w-[110px]">
+          </div>
+
+          <!-- ✅ Menu anchor (mobile) -->
+          <li><a href="#beranda" class="hover:text-green">beranda</a></li>
+          <li><a href="#packages" class="hover:text-green">packages</a></li>
+          <li><a href="#destination" class="hover:text-green">destination</a></li>
+          <li><a href="#about-us" class="hover:text-green">about us</a></li>
+          <li><a href="#news" class="hover:text-green">news</a></li>
+
+          <div class="mt-12">
+            <a href="../public/admin/login.html"
+               class="py-3 px-20 bg-green text-white border border-green rounded-md
+                      hover:bg-transparent hover:text-green hover:border-green transition">
+              login
+            </a>
+          </div>
+        </ul>
+      </div>
+
+      <div id="menuBurger" class="md:hidden cursor-pointer z-50 transition-all
+            duration-300">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!--content 1-->
+  <main>
+    <!-- ✅ Beranda: id untuk menuju bagian paling awal -->
+    <header id="beranda" class="w-full pt-14 pb-24 relative">
+      <div class="container mx-auto px-4">
+        <!---teks-->
+        <h1 class="hidden md:block font-bold capitalize text-[76px] absolute -left-[50px] bottom-52 -z-10 text-putih/80 -rotate-90">travelNF</h1>
+        <div class="w-full md:flex">
+          <!--kanan mobile-->
+          <div class="w-full md:hidden mb-12">
+            <div class="w-full h-[200px] overflow-hidden rounded-lg relative">
+              <img src="../public/img/Nabawi2.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <!--kiri-->
+          <div id="utamaKiri" class="w-full md:w-1/2 mb-12 md:mb-0">
+            <div class="flex gap-2 items-center mb-4">
+              <i class="fa-solid fa-compass text-green"></i>
+              <p class="font-semibold capitalize text-sm
+                        text-hitam">let's go around the Mekkah</p>
+            </div>
+
+            <h1 class="font-bold text-3xl capitalize text-hitam max-w-lg
+                    leading-tight mb-6 md:text-5xl">let’s Umrah now and <span
+                    class="text-green font-kedua">visit new, </span> Very <span></span>beautiful
+              places</span></h1>
+
+            <p class="leading-relaxed text-hitam2 text-sm mb-12 capitalize">don’t delay, it’s time for you to travel around
+              the Makkah and discover other new andinteresting things.</p>
+
+            <div class="flex gap-3">
+              <a href="../src/form order.html"
+                 class="btn capitalize flex gap-2 justify-between items-center">
+                Order Now
+                <i class="fa-solid fa-caret-right"></i>
+              </a>
+
+              <button class="btn-hitam capitalize flex gap-2 justify-between items-center">
+                <span class="hidden md:block">packages</span>
+                <i class="fa-solid fa-box-archive"></i>
+              </button>
+            </div>
+          </div>
+
+          <!--kanan-->
+          <div id="utamaKanan" class="w-full md:w-1/2 relative hidden md:block">
+            <!--img-->
+            <div class="w-[230px] h-[300px rounded-lg border-[5px] border-white overflow-hidden absolute -top-5 left-20">
+              <img src="../public/img/Bestie.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <!--IMG 2-->
+            <div class="w-[200px h-[230px] rounded-lg border-[5px] border-white overflow-hidden absolute left-32 -bottom-10 z-20">
+              <img src="../public/img/Mekkah.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <!--img 3-->
+            <div class="w-[200px h-[300px] rounded-lg border-[5px] border-white overflow-hidden absolute bottom-5 right-0 z-10">
+              <img src="../public/img/Tangan.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+
+            <!--card 1-->
+            <div class="w-[165px] h-[70px] px-[5px] bg-white rounded-md shadow-lg flex items-center gap-2 absolute right-9 z-10">
+              <div class="w-[70px] has-[50px] overflow-hidden rounded-md">
+                <img src="../public/img/Rectangle 29.jpg" alt="" class="w-full h-full object-cover">
+              </div>
+              <div class="flex flex-col">
+                <h4 class="font-semibold text-sm capitalize">Umrah Plan</h4>
+                <p class="text-[10px] capitalize">Plan Frist Before Umrah</p>
+              </div>
+            </div>
+
+            <!--card 2-->
+            <div class="w-[135px] h-[105px] bg-white py-2 px-3 rounded-md shadow-lg flex-col items-start justify-center absolute z-30 -bottom-5 left-5 capitalize">
+              <div class="flex gap-4 mb-2">
+                <i class="fa-solid fa-chart-simple text-green"></i>
+                <p class="font-normal text-xs">best place</p>
+              </div><div class="flex gap-4 mb-2">
+                <i class="fa-solid fa-camera text-green"></i>
+                <p class="font-normal text-xs">best photo</p>
+              </div><div class="flex gap-4 mb-2">
+                <i class="fa-solid fa-location-crosshairs text-green"></i>
+                <p class="font-normal text-xs">best location</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+  </main>
+
+  <!-- content 2 -->
+  <main>
+    <!-- ✅ About Us -->
+    <section id="about-us" class="w-full py-20 relative bg-white overflow-hidden">
+      <div class="absolute bottom-4 left-10 -z-10 opacity-50">
+        <img width="100" src="../public/titik.svg" alt="" class="w-[100px]">
+      </div>
+
+      <div class="container mx-auto px-4">
+        <div class="w-full flex flex-col md:flex-row items-center gap-10">
+
+          <div id="keduaKiri" class="w-full md:w-1/2 relative h-[400px] hidden md:block">
+            <div class="w-[300px] h-[250px] overflow-hidden rounded-xl absolute top-0 left-10 z-0">
+              <img src="../public/img/Nabawi2.jpg" alt="Nabawi" class="w-full h-full object-cover">
+            </div>
+
+            <div class="w-[320px] h-[240px] overflow-hidden border-[8px] border-white rounded-xl absolute bottom-10 right-10 shadow-2xl z-10">
+              <img src="../public/img/Makkah4.jpg" alt="Makkah" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <div id="keduaKanan" class="w-full md:w-1/2 md:pl-10">
+            <div class="mb-12 text-center md:text-left">
+              <h2 class="font-bold capitalize text-3xl md:text-4xl text-gray-900">
+                About <span class="text-[#00d44c]">Us</span>
+              </h2>
+            </div>
+
+            <div class="flex flex-col gap-8">
+              <div class="flex items-start gap-5">
+                <h3 class="text-2xl font-normal text-gray-800 pt-1">01.</h3>
+                <div class="flex flex-col">
+                  <h3 class="text-xl font-bold text-gray-900 capitalize mb-2">Trusted Umrah Services</h3>
+                  <p class="font-normal text-gray-500 text-sm leading-relaxed max-w-sm">
+                    Providing Reliable And Well-Organized Umrah Services.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-5">
+                <h3 class="text-2xl font-normal text-gray-800 pt-1">02.</h3>
+                <div class="flex flex-col">
+                  <h3 class="text-xl font-bold text-gray-900 capitalize mb-2">Professional Travel Planning</h3>
+                  <p class="font-normal text-gray-500 text-sm leading-relaxed max-w-sm">
+                    Offering Carefully Planned Umrah Packages For You.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-5">
+                <h3 class="text-2xl font-normal text-gray-800 pt-1">03.</h3>
+                <div class="flex flex-col">
+                  <h3 class="text-xl font-bold text-gray-900 capitalize mb-2">Comfortable & Safe Journey</h3>
+                  <p class="font-normal text-gray-500 text-sm leading-relaxed max-w-sm">
+                    Ensuring A Safe And Comfortable Travel Experience.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ Packages Destination -->
+    <header id="packages" class="w-full py-20">
+      <div class="container mx-auto px-4 relative">
+        <!-- ... isi packages kamu tetap ... -->
+        <div id="ketigabotton" class="absolute right-4 top-0 flex gap-2">
+          <div class="w-10 h-10 bg-gray-300/70 rounded-full flex justify-center items-center cursor-pointer hover:bg-gray-300 transition">
+            <i class="fa-solid fa-angle-left text-gray-700"></i>
+          </div>
+          <div class="w-10 h-10 bg-green rounded-full flex justify-center items-center hover:bg-white border shadow-md hover:border-green hover:text-green text-white cursor-pointer">
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+        </div>
+
+        <h2 id="ketigatengah" class="font-bold capitalize text-2xl md:text-4xl text-hitam text-center mb-4">
+          Packages <span class="text-green">Destination</span>
+        </h2>
+
+        <p id="ketigatengah2" class="text-center text-gray-600 max-w-3xl mx-auto leading-relaxed mb-16">
+          Choose The Best Umrah Package Designed For Your Comfort And Peace Of Mind.
+          <br />
+          A Meaningful Journey With Trusted Services And Professional Guidance.
+        </p>
+
+        <div" class="w-full flex flex-col md:flex-row gap-6">
+          <!-- ... card2/3/4 tetap ... -->
+        </div>
+      </div>
+    </header>
+
+    <!-- ✅ Destination For You To Come -->
+    <header id="destination" class="w-full py-20 bg-white">
+      <div class="container mx-auto px-4 relative">
+        <!-- ... isi destination kamu tetap ... -->
+        <div id="empatjudul" class="mb-12">
+          <h2 class="font-bold text-4xl text-black leading-tight">
+            Destination <br />
+            <span class="text-[#00C853]">For You</span> To Come
+          </h2>
+        </div>
+        <!-- ... dst ... -->
+      </div>
+    </header>
+
+    <!-- ✅ News -->
+    <section id="news" class="w-full py-20 font-sans">
+      <div class="container mx-auto px-4">
+        <header id="lima" class="max-w-2xl mx-auto mb-16 text-center">
+          <h1 class="text-3xl font-extrabold text-gray-900 md:text-4xl leading-tight">
+            Look For The Latest News About <br>
+            Your <span class="text-[#00d44c]">Travel Destination</span>
+          </h1>
+        </header>
+        <!-- ... isi news kamu tetap ... -->
+      </div>
+    </section>
+  </main>
+
+  <!-- footer (tetap) -->
+  <footer class="w-full bg-[#00d44c] pt-20 pb-10 mt-10 font-sans">
+    <!-- ... footer kamu tetap ... -->
+  </footer>
+
+  <script src="../src/main.js"></script>
+  <script>
+    ScrollReveal({
+      reset: true,
+      distance: '60px',
+      duration: 2500,
+      Delay: 400
+    });
+
+    ScrollReveal().reveal("#utamaKiri", { delay: 200, origin: 'left' });
+    ScrollReveal().reveal("#utamaKanan", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#keduaKiri", { delay: 200, origin: 'left' });
+    ScrollReveal().reveal("#keduaKanan", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#ketigatengah", { delay: 200, origin: 'bottom' });
+    ScrollReveal().reveal("#ketigatengah2", { delay: 200, origin: 'bottom' });
+    ScrollReveal().reveal("#ketigatengah21", { delay: 200, origin: 'left' });
+    ScrollReveal().reveal("#ketigatengah22", { delay: 200, origin: 'bottom' });
+    ScrollReveal().reveal("#ketigatengah23", { delay: 200, origin: 'bottom' });
+    ScrollReveal().reveal("#ketigatengah24", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#ketigabotton", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#empatbotton", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#empatjudul", { delay: 200, origin: 'left' });
+    ScrollReveal().reveal("#empat1", { delay: 200, origin: 'left' });
+    ScrollReveal().reveal("#empat2", { delay: 200, origin: 'top' });
+    ScrollReveal().reveal("#empat3", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#lima", { delay: 200, origin: 'top' });
+    ScrollReveal().reveal("#limakiri", { delay: 200, origin: 'left' });
+    ScrollReveal().reveal("#lima1", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#lima2", { delay: 200, origin: 'right' });
+    ScrollReveal().reveal("#lima3", { delay: 200, origin: 'right' });
+  </script>
+</body>
+</html>

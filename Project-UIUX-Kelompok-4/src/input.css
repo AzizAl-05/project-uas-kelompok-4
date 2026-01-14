@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.btn {
+    @apply py-3 px-8 bg-green text-white rounded-md shadow-xl hover:bg-white 
+    hover:shadow-none border hover:border-green hover:text-green transition-all
+    duration-500;
+}
+
+.btn-hitam{
+    @apply py-3 px-8 bg-hitam text-white rounded-md shadow-xl border 
+    hover:bg-white hover:shadow-none hover:border-hitam hover:text-hitam transition duration-500
+}

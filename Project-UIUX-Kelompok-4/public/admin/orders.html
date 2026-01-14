@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders | TravelNF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../node_modules/admin-lte/dist/css/adminlte.css">
+
+<style>
+
+  /* Update CSS di dalam tag <style> */
+.app-sidebar .nav-link {
+  transition: all 0.3s ease; /* Transisi halus */
+  border-radius: 8px; /* Sudut lebih tumpul */
+  margin: 4px 10px; /* Memberi jarak agar tidak menempel ke pinggir */
+}
+
+.app-sidebar .nav-link.active {
+  background: linear-gradient(45deg, #198754, #20c997) !important; /* Gradient hijau */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Efek bayangan */
+}
+
+.app-sidebar .nav-link:hover:not(.active) {
+  background-color: rgba(255,255,255,0.05);
+  transform: translateX(5px); /* Geser sedikit saat hover */
+}
+
+/* Mempercantik badge */
+#orderCountBadge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.6em;
+}
+
+/* BRAND TITLE */
+.sidebar-brand,
+.sidebar-brand .brand-text {
+  color: #ffffff !important;
+}
+
+/* MENU TEXT */
+.app-sidebar .nav-link p,
+.app-sidebar .nav-link i {
+  color: #ffffff !important;
+}
+
+/* MENU ACTIVE */
+.app-sidebar .nav-link.active {
+  background-color: #198754 !important;
+  color: #ffffff !important;
+}
+
+/* HOVER */
+.app-sidebar .nav-link:hover {
+  background-color: rgba(255,255,255,0.1);
+  color: #ffffff !important;
+}
+
+</style>
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+<div class="app-wrapper">
+
+  <!-- NAVBAR -->
+  <nav class="app-header navbar navbar-expand bg-body">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-lte-toggle="sidebar" href="#">
+            <i class="bi bi-list"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <aside class="app-sidebar bg-dark shadow">
+    <div class="sidebar-brand">
+      <span class="brand-text fw-bold">TravelNF Admin</span>
+    </div>
+
+    <div class="sidebar-wrapper">
+      <nav>
+        <ul class="nav sidebar-menu flex-column">
+          <li class="nav-item">
+            <a href="admin.html" class="nav-link">
+              <i class="nav-icon bi bi-speedometer2"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+  <a href="orders.html" class="nav-link active d-flex align-items-center justify-content-between">
+    <span>
+      <i class="nav-icon bi bi-cart-fill"></i> <p class="d-inline ms-2">Orders</p>
+    </span>
+    <span class="badge bg-danger rounded-pill shadow-sm" id="orderCountBadge">0</span>
+  </a>
+</li>
+
+          <li class="nav-item">
+            <a href="../../src/index.html" class="nav-link text-danger" id="logoutSidebar">
+              <i class="nav-icon bi bi-box-arrow-right"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="app-main">
+    <div class="app-content-header">
+      <div class="container-fluid">
+        <h1 class="mb-3">Orders</h1>
+      </div>
+    </div>
+
+    <div class="app-content">
+      <div class="container-fluid">
+        <div class="row mb-3">
+  <div class="col-md-4 ms-auto">
+    <div class="input-group">
+      <span class="input-group-text bg-success text-white">
+        <i class="bi bi-search"></i>
+      </span>
+      <input type="text" id="searchInput" class="form-control" placeholder="Cari nama atau paket...">
+    </div>
+  </div>
+</div>
+
+        <table class="table table-bordered table-striped">
+          <thead class="table-success">
+            <tr>
+              <th>Nama</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Package</th>
+              <th>Waktu</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTable"></tbody>
+        </table>
+
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../node_modules/admin-lte/dist/js/adminlte.js"></script>
+
+<script>
+  // ================= PROTEKSI LOGIN =================
+  if (localStorage.getItem('isLogin') !== 'true') {
+    window.location.href = '../login.html';
+  }
+
+  // ================= LOAD ORDERS =================
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const table = document.getElementById("ordersTable");
+  const searchInput = document.getElementById("searchInput");
+
+  // Fungsi render (Sekarang menerima parameter data agar bisa memfilter)
+  function renderOrders(dataToRender = orders) {
+    table.innerHTML = "";
+
+    if (dataToRender.length === 0) {
+      table.innerHTML = `
+        <tr>
+          <td colspan="6" class="text-center text-muted">
+            Data tidak ditemukan
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    dataToRender.forEach((order) => {
+      // Kita cari index asli di array 'orders' utama supaya saat hapus tidak salah data
+      const originalIndex = orders.indexOf(order);
+
+      table.innerHTML += `
+        <tr>
+          <td>${order.name}</td>
+          <td>${order.email}</td>
+          <td>${order.phone}</td>
+          <td>${order.package}</td>
+          <td>${order.createdAt}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" onclick="deleteOrder(${originalIndex})">
+              Hapus
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+  }
+
+  // ================= FITUR PENCARIAN =================
+  searchInput.addEventListener("keyup", function() {
+    const keyword = this.value.toLowerCase();
+
+    // Filter data berdasarkan Nama, Email, atau Nama Paket
+    const filtered = orders.filter(order =>
+      order.name.toLowerCase().includes(keyword) ||
+      order.package.toLowerCase().includes(keyword) ||
+      order.email.toLowerCase().includes(keyword)
+    );
+
+    renderOrders(filtered);
+  });
+
+  // ================= DELETE ORDER =================
+  function deleteOrder(index) {
+    if (confirm("Yakin hapus order ini?")) {
+      orders.splice(index, 1);
+      localStorage.setItem("orders", JSON.stringify(orders));
+
+      // Reset pencarian dan render ulang semua data
+      searchInput.value = "";
+      renderOrders();
+    }
+  }
+
+  // Render pertama kali
+  renderOrders();
+
+  // ================= LOGOUT =================
+  function logout() {
+    localStorage.removeItem('isLogin');
+    window.location.href = '../login.html';
+  }
+
+  document.getElementById('logoutSidebar')?.addEventListener('click', logout);
+
+function updateOrderBadge() {
+  const currentOrders = JSON.parse(localStorage.getItem("orders")) || [];
+  const badge = document.getElementById("orderCountBadge");
+
+  if (badge) {
+    badge.innerText = currentOrders.length;
+    // Sembunyikan badge jika tidak ada order (opsional)
+    badge.style.display = currentOrders.length > 0 ? 'inline-block' : 'none';
+  }
+}
+
+// Panggil fungsi ini setiap kali halaman di-load
+updateOrderBadge();
+
+// Dan panggil juga di dalam fungsi deleteOrder agar angka berkurang otomatis
+function deleteOrder(index) {
+  if (confirm("Yakin hapus order ini?")) {
+    orders.splice(index, 1);
+    localStorage.setItem("orders", JSON.stringify(orders));
+    renderOrders();
+    updateOrderBadge(); // <--- Update angka badge setelah hapus
+  }
+}
+
+</script>
+
+</body>
+</html>

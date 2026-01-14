@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  .btn-custom {
+    background-color: #00BD1C ;      /* hijau muda */
+    border: 2px solid #00BD1C;
+    color: #ffffff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-custom:hover {
+    background-color: #ffffff;
+    color: #00BD1C;
+    border: 2px solid #00BD1C;
+  }
+</style>
+
+
+</head>
+
+<body>
+
+<form id="orderForm">
+  <div class="container mt-5">
+    <div class="card shadow">
+<div class="bg-white p-3 rounded-xl shadow-md"> <img src="../public/Logo.svg" alt="Logo" class="h-16 w-auto"> </div>
+      <div class="card-body">
+
+        <!-- Full Name -->
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Full Name</label>
+          <div class="col-8">
+            <input id="fullName" type="text" required class="form-control">
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group row">
+          <label class="col-4 col-form-label">My Address</label>
+          <div class="col-8">
+            <input id="address" type="text" class="form-control">
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group row">
+          <label class="col-4 col-form-label">E-mail</label>
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-vcard-o"></i>
+                </div>
+              </div>
+              <input id="email" type="email" required class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group row">
+          <label class="col-4 col-form-label">No. Phone</label>
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-phone"></i>
+                </div>
+              </div>
+              <input id="phone" type="text" required class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group row">
+          <label class="col-4">Gender</label>
+          <div class="col-8">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input id="ikhwan" name="gender" type="radio" value="Ikhwan" class="custom-control-input" required>
+              <label for="ikhwan" class="custom-control-label">Ikhwan</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input id="akhwat" name="gender" type="radio" value="Akhwat" class="custom-control-input">
+              <label for="akhwat" class="custom-control-label">Akhwat</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package -->
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Select Package</label>
+          <div class="col-8">
+            <select id="package" class="custom-select" required>
+              <option value="">--- pilih salah satu ---</option>
+              <option>Umrah Reguler</option>
+              <option>Umrah Perak</option>
+              <option>Umrah Emas</option>
+              <option>Umrah VIP</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button type="submit" class="btn btn-custom">
+  Order Now
+</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+<script src="../src/form.js"></script>
+</body>
+</html>

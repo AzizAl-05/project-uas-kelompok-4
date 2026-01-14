@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- AdminLTE -->
+  <link rel="stylesheet" href="../../node_modules/admin-lte/dist/css/adminlte.min.css">
+
+  <style>
+  :root {
+    --green-primary: #22c55e;
+    --green-dark: #16a34a;
+  }
+
+  /* Card outline */
+  .card-primary.card-outline {
+    border-top: 3px solid var(--green-primary);
+  }
+
+  /* Button */
+  .btn-primary {
+    background-color: var(--green-primary);
+    border-color: var(--green-primary);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--green-dark);
+    border-color: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+  }
+
+  /* Input focus */
+  .form-control:focus {
+    border-color: var(--green-primary);
+    box-shadow: 0 0 0 0.2rem rgba(34, 197, 94, 0.25);
+  }
+
+  /* Icon input */
+  .input-group-text {
+    background-color: #eafff2;
+    color: var(--green-primary);
+  }
+
+  /* Title */
+  .card-header h1 {
+    color: var(--green-primary);
+  }
+</style>
+
+</head>
+
+<body class="login-page bg-light">
+
+<div class="login-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <h1 class="fw-bold">Login</h1>
+    </div>
+
+    <div class="card-body">
+      <p class="login-box-msg">Masuk untuk mengelola order</p>
+
+      <form id="loginForm">
+        <div class="input-group mb-3">
+          <input type="text" id="username" class="form-control" placeholder="Username" required>
+          <div class="input-group-text">
+            <i class="bi bi-person"></i>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="password" id="password" class="form-control" placeholder="Password" required>
+          <div class="input-group-text">
+            <i class="bi bi-lock"></i>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </div>
+        </div>
+      </form>
+
+      <ul class="list-unstyled mt-3 text-center">
+        <li>Belum punya akun? <a href="register.html" id="registerLink">Daftar</a></li>
+      </ul>
+
+      <p id="errorMsg" class="text-danger mt-3 text-center d-none">
+        Username atau password salah
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../node_modules/admin-lte/dist/js/adminlte.min.js"></script>
+<script src="../../src/main.js"></script>
+
+</body>
+</html>
